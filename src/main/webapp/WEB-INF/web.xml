@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Tong</display-name>
+  <welcome-file-list>
+    <welcome-file>login.html</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>login.htm</welcome-file> 
+    <welcome-file>main.html</welcome-file>
+    <welcome-file>main.jsp</welcome-file>
+    <welcome-file>main.htm</welcome-file> 
+    
+    
+    
+
+  </welcome-file-list>
+  
+  
+  <context-param>
+    <param-name>POSTS_PER_PAGE</param-name>
+    <param-value>5</param-value>
+  </context-param>
+  <context-param>
+    <param-name>PAGES_PER_BLOCK</param-name>
+    <param-value>5</param-value>
+  </context-param>
+  
+  <context-param>
+	<param-name>maxPostSize</param-name>
+	<param-value>10240000</param-value>
+</context-param>
+  
+  
+  
+  
+  
+  
+	<servlet>
+		<servlet-name>MemberList</servlet-name>
+		<servlet-class>member.MemberListController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MemberList</servlet-name>
+		<url-pattern>/admin/memberList.do</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>VoteList</servlet-name>
+		<servlet-class>tongBoard.VoteListController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>VoteList</servlet-name>
+		<url-pattern>/admin/voteList.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+	
+	<servlet>
+		<servlet-name>NoticeList</servlet-name>
+		<servlet-class>tongBoard.NoticeListController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NoticeList</servlet-name>
+		<url-pattern>/admin/noticeList.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Notice</servlet-name>
+		<servlet-class>tongBoard.NoticeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Notice</servlet-name>
+		<url-pattern>/admin/notice.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>NoticeUpdate</servlet-name>
+		<servlet-class>tongBoard.NoticeUpdateController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NoticeUpdate</servlet-name>
+		<url-pattern>/admin/noticeUpdate.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>NoticeWrite</servlet-name>
+		<servlet-class>tongBoard.NoticeWriteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NoticeWrite</servlet-name>
+		<url-pattern>/admin/noticeWrite.do</url-pattern>
+	</servlet-mapping>
+	
+	
+  
+  <!-- 웹소켓 채팅을 위한 설정(예제 15-3) -->
+  <context-param>
+    <param-name>CHAT_ADDR</param-name>
+    <param-value>ws://localhost:8082/Tong</param-value>
+  </context-param> 
+</web-app>
+
