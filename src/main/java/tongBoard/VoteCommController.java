@@ -18,18 +18,7 @@ public class VoteCommController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//댓글 보여주기
-		Tong_commDAO dao = new Tong_commDAO();
 		
-		System.out.println("관리자에서 투표 항목 목록출력"+req.getParameter("mode"));
-		Map<String, Object> map= new HashMap<String, Object>(); 	
-		List<Tong_commDTO> boardLists = dao.commList(map);
-		
-		req.setAttribute("boardLists",boardLists);
-		req.setAttribute("map", map);
-		
-		req.getRequestDispatcher("./voteRs.jsp").forward(req, resp); //view로 포워드
-
-		System.out.println("댓글작성 성공");
 	}
 	
 	@Override
