@@ -37,6 +37,28 @@
 		</script>
 		
 		
+<script type="text/javascript">
+	function validateForm(form) {
+		if(form.name.value ==""){
+			alert("작성자를 입력하세요");
+			form.name.focus();
+			return false;
+		}
+		if(form.comment.value ==""){
+			alert("내용을 입력하세요");
+			form.comment.focus();
+			return false;
+		}
+	}
+	
+	function del() {
+    	var t = confirm("삭제하시겠습니까?");
+    	if(!t) return false; 
+    	
+	}
+
+</script>		
+		
 		
    </head>
     <body>
@@ -49,11 +71,12 @@
 					    <div class="bg-faded p-5 rounded">
 						<span style="color: red ">*  [새로고침 불가] 새로고침 시 투표수에 반영되므로 막습니다.</span>
 					    
-					         <h2 class="row section-heading mb-0">
-					            <span class="section-heading-lower"> ${dto.title} </span> <!-- &num=${param.num} -->
-  		                     </h2> 
-  		                           
-  		                     <div class="col-lg-6">
+				         	<h2 class="row section-heading mb-0">
+				            	<span class="section-heading-lower"> ${dto.title} </span> <!-- &num=${param.num} -->
+ 		                    </h2> 
+	                           
+	                           
+  		                    <div class="col-lg-6">
                             	<div class="card mb-4">
                                 	<div class="card-header">
                                 	
@@ -105,6 +128,11 @@
                                     </div>
                                 </div>
                         	</div>
+                        	
+                        	
+                      		
+                      
+                      
                       	</div>
 					</div>
            		</div>
@@ -113,21 +141,62 @@
                         <div class="bg-faded p-5 rounded"><p class="mb-0">Our seasonal menu features delicious snacks, baked goods, and even full meals perfect for breakfast or lunchtime. We source our ingredients from local, oragnic farms whenever possible, alongside premium vendors for specialty goods.</p></div>
 		                </div>
                     </div> -->
-            </div>
         </section>
         
          <section class="page-section">
             <div class="container">
                 <div class="product-item">
                     <div class="product-item-title d-flex">
+                        
+                        
                         <div class="bg-faded p-5 d-flex ms-auto rounded">
-                            <h2 class="section-heading mb-0">
+                        
+                        <form action="./comment.do" method="post" onsubmit="return validateForm(this);"> 
+	            				<input type="hidden" name="inputId" value="<%= session.getAttribute("inputId") %>"/>
+	                            <input type="hidden" name="mode" value="add">
+	                            
+	                            <div class="row mb-3 col d-flex justify-content-end ">
+                                    <div class="col-md-3 row form-floating mb-3 mb-md-0">
+                                    
+                                    
+                                    
+                                    <%
+                                    String name="";
+                                    if (session.getAttribute("inputId")!=null){ 
+                                    	name= session.getAttribute("inputId").toString();
+                                    }
+                                    else {
+                                    	name= "비회원";
+                                    }
+                                     
+                                    %>
+                                    
+                                        <input class=" col-md-4 form-control" name="name" type="text" 
+                                        	value="<%= name %>" placeholder="" />
+                                    <%    	
+                                    %>    	
+                                        	
+                                        	
+                                  		<label for="name">작성자</label>
+                                  	</div>
+                                  	<div class="col-md-6 row form-floating mb-3 mb-md-0">	
+                                  		<input class="col-md-4 form-control" name="comment" type="text" placeholder="" />
+                                  		<label for="comment">내용</label>
+	                            	</div>
+		                            <div class="col-md-3 form-floating mb-3 mb-md-0">
+		                             	<button type="submit" class="btn btn-primary btn-block" >댓글추가</button>
+		                            </div>
+	                            </div>
+	                       	</form>
+                        
+                        
+                            <%-- <h2 class="section-heading mb-0">
                                 <span class="section-heading-lower">대화명  </span>
                                 <span class="section-heading-upper">웹소켓 채팅 - 대화명 적용해서 채팅창 띄워주기</span>
 	                        </h2> 
 	                          	<div>  
 		                            <jsp:include page="./webSocket/MultiChatMain.jsp" />
-		                        </div>  
+		                        </div>  --%> 
                         </div> 
                     
 <% 
@@ -141,6 +210,7 @@
 <%
 						request.removeAttribute("chat"); }
 %>
+               		</div>
                 </div>
             </div>
         </section>

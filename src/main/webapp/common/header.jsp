@@ -8,6 +8,21 @@
 </head>
 <body>
 		<header>
+			<div class="bg-warning d-flex ms-auto rounded" 
+				style="--bs-bg-opacity: 0.2"> 
+                <h2 class="section-heading mb-0">
+                    <!-- <span class="section-heading-lower">대화명  </span> -->
+                    <span class="section-heading-upper" style="color: white;">채팅접속하기</span>
+             </h2> 
+               	<div>  
+                  <jsp:include page="./webSocket/MultiChatMain.jsp" /> 
+              </div>  
+            </div>  
+		
+		
+		
+		
+		
             <h1 class="site-heading text-center text-faded d-none d-lg-block">
                 
             <%

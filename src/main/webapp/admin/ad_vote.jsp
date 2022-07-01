@@ -77,6 +77,7 @@
 	            				<input type="hidden" name="inputId" value="<%= session.getAttribute("inputId") %>"/>
 	                            <input type="hidden" name="mode" value="add">
 
+
 	                            
 	                            <div class="row mb-3 col d-flex justify-content-end ">
                                     <div class="col-md-3 row form-floating mb-3 mb-md-0">

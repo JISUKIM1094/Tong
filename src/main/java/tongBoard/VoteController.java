@@ -18,6 +18,22 @@ import utils.JSFunction;
 public class VoteController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		Tong_commDAO dao = new Tong_commDAO();
+		
+		Map<String, Object> map= new HashMap<String, Object>(); 	
+		List<Tong_commDTO> boardLists = dao.commList(map);
+		
+		req.setAttribute("boardLists",boardLists);
+		req.setAttribute("map", map);
+		
+		req.getRequestDispatcher("./voteRs.jsp").forward(req, resp); //view로 포워드
+
+		System.out.println("댓글작성 성공");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String select= req.getParameter("select");
 		String num = req.getParameter("num");
 		System.out.println(" 게시물: "+ num+" 투표: "+select);
@@ -38,5 +54,6 @@ public class VoteController extends HttpServlet{
 		req.getRequestDispatcher("./voteRs.jsp").forward(req, resp); //view로 포워드
 
 		System.out.println("투표완료");
+		
 	}
 }
